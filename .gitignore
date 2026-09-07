@@ -1,0 +1,48 @@
+# Model weights
+*.h5
+*.pt
+*.pth
+*.ckpt
+*.pkl
+*.joblib
+
+# Raw & processed data (too large)
+*.xlsx
+*.csv
+*.parquet
+preprocessed_rwis_data.xlsx
+
+# Paper and presentation files
+*.docx
+*.pdf
+*.pptx
+*.doc
+
+# Generated figures (reproducible from notebooks)
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.eps
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# VS Code / IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
