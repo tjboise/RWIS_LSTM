@@ -58,13 +58,11 @@ Near-term forecasts (10–20 minutes) retain the most operational value for main
 
 ### Baseline comparison (LOGO-CV, 3 seeds × 4 stations)
 
-> **Note:** RWIS-LSTM (HPO) results are based on 6 of 12 folds completed; final numbers may change slightly.
-
 #### Overall mean metrics
 
 | Model | Input | R² | RMSE | MAE | MAPE |
 |-------|-------|----|------|-----|------|
-| **RWIS-LSTM (HPO)** | x sequence + y history | **0.622** | **0.034** | **0.021** | **2.99%** |
+| **RWIS-LSTM (HPO)** | x sequence + y history | **0.638** | **0.035** | **0.022** | **3.06%** |
 | Random Forest | x (single step) | 0.378 | 0.042 | 0.030 | 4.19% |
 | XGBoost | x (single step) | 0.200 | 0.046 | 0.038 | 5.15% |
 | Decision Tree | x (single step) | 0.152 | 0.048 | 0.032 | 4.43% |
@@ -74,13 +72,13 @@ Near-term forecasts (10–20 minutes) retain the most operational value for main
 | LSTM (x-only, m2m) | x sequence | -0.079 | 0.059 | 0.040 | 5.48% |
 | GRU (x-only, m2m) | x sequence | -0.218 | 0.065 | 0.044 | 6.09% |
 
-*m2m = many-to-many; evaluated on the last output step (y_{n+1}).*
+*m2m = many-to-many; evaluated on the last output step (y_{n+1}). All results: 3 seeds × 4 LOGO folds.*
 
 #### Per-station R²
 
 | Model | Station 158 | Station 26 | Station 27 | Station 29 |
 |-------|-------------|------------|------------|------------|
-| **RWIS-LSTM (HPO)** | **0.790** | **0.458** | **0.792** | **0.446** |
+| **RWIS-LSTM (HPO)** | **0.800** | **0.433** | **0.801** | **0.518** |
 | Random Forest | 0.617 | -0.383 | 0.650 | 0.627 |
 | XGBoost | 0.540 | -0.946 | 0.596 | 0.607 |
 | Decision Tree | 0.537 | -1.024 | 0.554 | 0.542 |
