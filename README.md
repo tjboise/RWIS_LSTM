@@ -56,6 +56,42 @@ Using an autoregressive strategy (predicted grip fed back at each step; weather 
 
 Near-term forecasts (10–20 minutes) retain the most operational value for maintenance decisions such as pre-emptive salt application.
 
+### Baseline comparison (LOGO-CV, 3 seeds × 4 stations)
+
+> **Note:** RWIS-LSTM (HPO) results are based on 6 of 12 folds completed; final numbers may change slightly.
+
+#### Overall mean metrics
+
+| Model | Input | R² | RMSE | MAE | MAPE |
+|-------|-------|----|------|-----|------|
+| **RWIS-LSTM (HPO)** | x sequence + y history | **0.622** | **0.034** | **0.021** | **2.99%** |
+| Random Forest | x (single step) | 0.378 | 0.042 | 0.030 | 4.19% |
+| XGBoost | x (single step) | 0.200 | 0.046 | 0.038 | 5.15% |
+| Decision Tree | x (single step) | 0.152 | 0.048 | 0.032 | 4.43% |
+| Stacked LSTM (x-only, m2m) | x sequence | 0.132 | 0.053 | 0.032 | 4.53% |
+| MLP | x (single step) | 0.015 | 0.056 | 0.040 | 5.39% |
+| RNN (x-only, m2m) | x sequence | -0.023 | 0.060 | 0.041 | 5.58% |
+| LSTM (x-only, m2m) | x sequence | -0.079 | 0.059 | 0.040 | 5.48% |
+| GRU (x-only, m2m) | x sequence | -0.218 | 0.065 | 0.044 | 6.09% |
+
+*m2m = many-to-many; evaluated on the last output step (y_{n+1}).*
+
+#### Per-station R²
+
+| Model | Station 158 | Station 26 | Station 27 | Station 29 |
+|-------|-------------|------------|------------|------------|
+| **RWIS-LSTM (HPO)** | **0.790** | **0.458** | **0.792** | **0.446** |
+| Random Forest | 0.617 | -0.383 | 0.650 | 0.627 |
+| XGBoost | 0.540 | -0.946 | 0.596 | 0.607 |
+| Decision Tree | 0.537 | -1.024 | 0.554 | 0.542 |
+| Stacked LSTM (x-only) | 0.375 | -0.558 | 0.496 | 0.213 |
+| MLP | 0.609 | -0.677 | 0.408 | -0.282 |
+| RNN (x-only) | 0.457 | -0.233 | 0.453 | -0.771 |
+| LSTM (x-only) | 0.433 | -0.809 | 0.419 | -0.360 |
+| GRU (x-only) | 0.413 | -0.673 | 0.430 | -1.044 |
+
+Station 26 is the hardest fold for all models under LOGO cross-validation. RWIS-LSTM's use of y history as input is the key driver of its advantage over x-only baselines.
+
 ---
 
 ## Repository Structure
